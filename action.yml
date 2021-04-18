@@ -11,7 +11,7 @@ inputs:
 runs:
   using: docker
   image: Dockerfile
-  entrypoint: 'entrypoint.sh'
+  entrypoint: '/entrypoint.sh'
   args:
     - ${{ inputs.input_file }}
     - ${{ inputs.output_file }}
