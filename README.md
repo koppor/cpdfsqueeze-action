@@ -25,8 +25,8 @@ This action is based on [cpdfqueeze](https://github.com/johnwhitington/cpdfsquee
 ```yaml
 uses: koppor/cpdfsqueeze-action@v1
 with:
-  input_file: 'main.tex'
-  output_file: 'main-small.tex'
+  input_file: 'main.pdf'
+  output_file: 'main-small.pdf'
 ```
 
 ## License
