@@ -1,0 +1,20 @@
+name: cpdfsqueeze
+description: Reduce the size of PDFs by cpdfsqueeze
+author: Oliver Kopp
+inputs:
+  input_file:
+    description: The PDF file to reduce the size
+    required: true
+  output_file:
+    description: The PDF to create
+    required: true
+runs:
+  using: docker
+  image: Dockerfile
+  entrypoint: 'entrypoint.sh'
+  args:
+    - ${{ inputs.input_file }}
+    - ${{ inputs.output_file }}
+branding:
+  icon: book
+  color: blue
