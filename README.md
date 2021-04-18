@@ -1,8 +1,8 @@
-# cpdfqueeze-action
+# cpdfsqueeze-action
 
 > :octocat: GitHub Action to reduce the size of PDFs by cpdfsqueeze
 
-This action is based on [cpdfqueeze](https://github.com/johnwhitington/cpdfsqueeze).
+This action is based on [cpdfsqueeze](https://github.com/johnwhitington/cpdfsqueeze).
 
 ## Inputs
 
