@@ -16,13 +16,14 @@ This action is based on [cpdfqueeze](https://github.com/johnwhitington/cpdfsquee
 
 ## Available versions
 
+* `@v1` latest v1.x release
 * `@latest` points to the latest release
 * `@edge` is the latest development version
 
 ## Example usage
 
 ```yaml
-uses: koppor/cpdfsqueeze-action@edge
+uses: koppor/cpdfsqueeze-action@v1
 with:
   input_file: 'main.tex'
   output_file: 'main-small.tex'
