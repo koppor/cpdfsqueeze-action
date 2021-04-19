@@ -4,6 +4,7 @@ on:
   push:
     branches:
       - edge
+      - v1
       - ghactionstest
     tags:
       - '*'
