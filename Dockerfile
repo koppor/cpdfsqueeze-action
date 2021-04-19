@@ -11,7 +11,6 @@ RUN make
 
 FROM debian:stable-20210408-slim
 COPY --from=builder /tmp/cpdfsqueeze/cpdfsqueeze /usr/bin
-COPY entrypoint.sh /entrypoint.sh
 RUN mkdir /workdir
 WORKDIR /workdir
 CMD ["cpdfsqueeze", "--help"]
