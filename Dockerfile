@@ -1,4 +1,4 @@
-FROM debian:stable-20210408-slim AS BUILDER
+FROM debian:stable-slim AS BUILDER
 ENV LANG=C.UTF-8 \
     LC_ALL=C.UTF-8 \
     TERM=dumb
@@ -9,7 +9,7 @@ RUN git clone --depth=1 https://github.com/johnwhitington/cpdfsqueeze.git
 WORKDIR /tmp/cpdfsqueeze
 RUN make
 
-FROM debian:stable-20210408-slim
+FROM debian:stable-slim
 COPY --from=builder /tmp/cpdfsqueeze/cpdfsqueeze /usr/bin
 COPY entrypoint.sh /entrypoint.sh
 RUN mkdir /workdir
