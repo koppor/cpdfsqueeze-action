@@ -3,7 +3,11 @@ name: Check
 on:
   push:
     branches:
-      - main
+      - edge
+      - latest
+      - v1
+    tags:
+      - '**'
   pull_request:
   schedule:
     - cron: '1 2 5 * *'
