@@ -16,9 +16,13 @@ This action is based on [cpdfsqueeze](https://github.com/johnwhitington/cpdfsque
 
 ## Available versions
 
-* `@v1` latest v1.x release
-* `@latest` points to the latest release
-* `@edge` is the latest development version
+| Version | GitHub branch/tag | Note |
+| -- | -- |
+| `@v1` | branch: `v1` | latest v1.x release |
+| `@latest` | branch: `latest` | points to the latest release |
+| `@edge` | branch: `edge`| latest development version |
+
+Since `@v1` and `@latest` change after a new release and git tags should NOT change once published, we decided to use branches.
 
 ## Example usage
 
