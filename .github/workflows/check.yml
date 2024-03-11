@@ -19,7 +19,7 @@ permissions:
 jobs:
   check:
     runs-on: ubuntu-latest
-    name: cache
+    name: Check
     steps:
       - name: Checkout
         uses: actions/checkout@v4
