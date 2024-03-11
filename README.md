@@ -16,7 +16,7 @@ Alternatives to shrink the size of the PDF are:
   As of 2021-04-19, there is no updated Docker image.
   See <https://github.com/rbrito/pdfsizeopt/issues/6> for details.
 
-## Action Usage
+## Action usage
 
 ### Inputs
 
@@ -47,7 +47,7 @@ with:
   output_file: 'main-small.pdf'
 ```
 
-## Docker Image Usage
+## Docker image usage
 
 ```terminal
 docker run -v "C:\temp\test:/workdir" koppor/cpdfsqueeze cpdfsqueeze main.pdf main-small.pdf
