@@ -19,11 +19,15 @@ permissions:
 jobs:
   check:
     runs-on: ubuntu-latest
-    name: Check
+    name: ${{ matrix.version }}
+    strategy:
+      fail-fast: false
+      matrix:
+        version: ["v1", "latest", "edge"]
     steps:
       - name: Checkout
         uses: actions/checkout@v4
-      - uses: koppor/cpdfsqueeze-action@v1
+      - uses: koppor/cpdfsqueeze-action@${{ matrix.version }}
         with:
           input_file: 'test/example.pdf'
           output_file: 'test/example-small.pdf'
