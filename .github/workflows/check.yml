@@ -1,0 +1,61 @@
+name: Check
+
+on:
+  push:
+    branches:
+      - edge
+      - latest
+      - v1
+    tags:
+      - '**'
+  pull_request:
+  schedule:
+    - cron: '1 2 5 * *'
+  workflow_dispatch:
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: write
+
+jobs:
+  check_v1:
+    runs-on: ubuntu-latest
+    name: v1
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - uses: koppor/cpdfsqueeze-action@v1
+        with:
+          input_file: 'test/example.pdf'
+          output_file: 'test/example-small.pdf'
+  check_latest:
+    runs-on: ubuntu-latest
+    name: latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - uses: koppor/cpdfsqueeze-action@latest
+        with:
+          input_file: 'test/example.pdf'
+          output_file: 'test/example-small.pdf'
+  check_edge:
+    runs-on: ubuntu-latest
+    name: edge
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - uses: koppor/cpdfsqueeze-action@edge
+        with:
+          input_file: 'test/example.pdf'
+          output_file: 'test/example-small.pdf'
+  keepalive:
+    name: Keepalive
+    runs-on: ubuntu-latest
+    permissions:
+      actions: write
+    steps:
+      - uses: actions/checkout@v4
+      - uses: gautamkrishnar/keepalive-workflow@v2
