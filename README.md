@@ -8,14 +8,6 @@ This repository both provides a GitHub action and a Docker image.
 
 The Docker image is published to <https://hub.docker.com/repository/docker/koppor/cpdfsqueeze>.
 
-Alternatives to shrink the size of the PDF are:
-
-- Ghostscript, most commonly [shrink.sh](http://www.alfredklomp.com/programming/shrinkpdf/) is used.
-  The drawback is that PDF bookmarks and the initial page view are currently lost.
-- pdfsizeopt, where [rbrito/pdfsizeopt](https://github.com/rbrito/pdfsizeopt) is currently the maintained fork.
-  As of 2021-04-19, there is no updated Docker image.
-  See <https://github.com/rbrito/pdfsizeopt/issues/6> for details.
-
 ## Action usage
 
 ### Inputs
