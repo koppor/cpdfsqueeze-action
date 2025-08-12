@@ -26,7 +26,7 @@ jobs:
     name: v1
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
       - uses: koppor/cpdfsqueeze-action@v1
         with:
           input_file: 'test/example.pdf'
@@ -36,7 +36,7 @@ jobs:
     name: latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
       - uses: koppor/cpdfsqueeze-action@latest
         with:
           input_file: 'test/example.pdf'
@@ -46,16 +46,8 @@ jobs:
     name: edge
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
       - uses: koppor/cpdfsqueeze-action@edge
         with:
           input_file: 'test/example.pdf'
           output_file: 'test/example-small.pdf'
-  keepalive:
-    name: Keepalive
-    runs-on: ubuntu-latest
-    permissions:
-      actions: write
-    steps:
-      - uses: actions/checkout@v4
-      - uses: gautamkrishnar/keepalive-workflow@v2
