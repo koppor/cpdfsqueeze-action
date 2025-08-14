@@ -57,6 +57,8 @@ jobs:
         with:
           name: example-small.pdf
           path: test/example-small.pdf
+
+  # One cannot use matrix at action references; therefore explicit enumeration
   check_v1:
     runs-on: ubuntu-latest
     name: v1
