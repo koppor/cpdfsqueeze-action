@@ -21,6 +21,42 @@ permissions:
   contents: write
 
 jobs:
+  check:
+    runs-on: ubuntu-latest
+    services:
+      registry:
+        image: registry:2
+        ports:
+          - 5000:5000
+    steps:
+      - name: Set up QEMU
+        uses: docker/setup-qemu-action@v2
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v2
+        with:
+          driver-opts: network=host
+      - name: Cache Docker layers
+        uses: actions/cache@v3
+        with:
+          path: /tmp/.buildx-cache
+          key: ${{ runner.os }}-buildx
+      - name: Set up Git repository
+        uses: actions/checkout@v5
+      - name: Build
+        id: docker_build
+        uses: docker/build-push-action@v4
+        with:
+          push: true
+          tags: localhost:5000/name/app:latest
+      - name: lacheck
+        working-directory: test
+        run: |
+          docker run -v $(pwd):/workdir localhost:5000/name/app:latest example.pdf example-small.pdf
+      - name: Archive PDF
+        uses: actions/upload-artifact@v5
+        with:
+          name: example-small.pdf
+          path: test/example-small.pdf
   check_v1:
     runs-on: ubuntu-latest
     name: v1
