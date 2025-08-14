@@ -1,4 +1,4 @@
-FROM debian:stable-slim AS BUILDER
+FROM debian:bookworm-slim AS BUILDER
 ENV LANG=C.UTF-8 \
     LC_ALL=C.UTF-8 \
     TERM=dumb
@@ -15,3 +15,4 @@ COPY entrypoint.sh /entrypoint.sh
 RUN mkdir /workdir
 WORKDIR /workdir
 CMD ["cpdfsqueeze", "--help"]
+ENTRYPOINT ["/entrypoint.sh"]

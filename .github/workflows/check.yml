@@ -21,12 +21,51 @@ permissions:
   contents: write
 
 jobs:
+  check_HEAD:
+    runs-on: ubuntu-latest
+    name: HEAD
+    services:
+      registry:
+        image: registry:2
+        ports:
+          - 5000:5000
+    steps:
+      - name: Set up QEMU
+        uses: docker/setup-qemu-action@v2
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v2
+        with:
+          driver-opts: network=host
+      - name: Cache Docker layers
+        uses: actions/cache@v3
+        with:
+          path: /tmp/.buildx-cache
+          key: ${{ runner.os }}-buildx
+      - name: Set up Git repository
+        uses: actions/checkout@v5
+      - name: Build
+        id: docker_build
+        uses: docker/build-push-action@v4
+        with:
+          push: true
+          tags: localhost:5000/name/app:latest
+      - name: squeeze
+        working-directory: test
+        run: |
+          docker run -v $(pwd):/workdir localhost:5000/name/app:latest example.pdf example-small.pdf
+      - name: Archive PDF
+        uses: actions/upload-artifact@v4
+        with:
+          name: example-small.pdf
+          path: test/example-small.pdf
+
+  # One cannot use matrix at action references; therefore explicit enumeration
   check_v1:
     runs-on: ubuntu-latest
     name: v1
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
       - uses: koppor/cpdfsqueeze-action@v1
         with:
           input_file: 'test/example.pdf'
@@ -36,7 +75,7 @@ jobs:
     name: latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
       - uses: koppor/cpdfsqueeze-action@latest
         with:
           input_file: 'test/example.pdf'
@@ -46,16 +85,8 @@ jobs:
     name: edge
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
       - uses: koppor/cpdfsqueeze-action@edge
         with:
           input_file: 'test/example.pdf'
           output_file: 'test/example-small.pdf'
-  keepalive:
-    name: Keepalive
-    runs-on: ubuntu-latest
-    permissions:
-      actions: write
-    steps:
-      - uses: actions/checkout@v4
-      - uses: gautamkrishnar/keepalive-workflow@v2
