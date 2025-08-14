@@ -13,7 +13,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Fixed
 
-- Pin debian release to "bookworm". [#5](https://github.com/koppor/cpdfsqueeze-action/issues/5)
+- Pin debian release (for building) to "bookworm". [#5](https://github.com/koppor/cpdfsqueeze-action/issues/5)
 
 ### Changed
 
