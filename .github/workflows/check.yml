@@ -21,8 +21,9 @@ permissions:
   contents: write
 
 jobs:
-  check:
+  check_HEAD:
     runs-on: ubuntu-latest
+    name: HEAD
     services:
       registry:
         image: registry:2
