@@ -57,17 +57,33 @@ jobs:
         with:
           name: example-small.pdf
           path: test/example-small.pdf
-  check-tags:
+  check_v1:
     runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        version: [v1, latest, edge]
-    name: ${{ matrix.version }}
+    name: v1
     steps:
       - name: Checkout
         uses: actions/checkout@v5
-      - name: Run cpdfsqueeze ${{ matrix.version }}
-        uses: koppor/cpdfsqueeze-action@${{ matrix.version }}
+      - uses: koppor/cpdfsqueeze-action@v1
+        with:
+          input_file: 'test/example.pdf'
+          output_file: 'test/example-small.pdf'
+  check_latest:
+    runs-on: ubuntu-latest
+    name: latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v5
+      - uses: koppor/cpdfsqueeze-action@latest
+        with:
+          input_file: 'test/example.pdf'
+          output_file: 'test/example-small.pdf'
+  check_edge:
+    runs-on: ubuntu-latest
+    name: edge
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v5
+      - uses: koppor/cpdfsqueeze-action@edge
         with:
           input_file: 'test/example.pdf'
           output_file: 'test/example-small.pdf'
