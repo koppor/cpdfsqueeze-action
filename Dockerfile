@@ -15,3 +15,4 @@ COPY entrypoint.sh /entrypoint.sh
 RUN mkdir /workdir
 WORKDIR /workdir
 CMD ["cpdfsqueeze", "--help"]
+ENTRYPOINT ["/entrypoint.sh"]
