@@ -48,7 +48,7 @@ jobs:
         with:
           push: true
           tags: localhost:5000/name/app:latest
-      - name: lacheck
+      - name: squeeze
         working-directory: test
         run: |
           docker run -v $(pwd):/workdir localhost:5000/name/app:latest example.pdf example-small.pdf
