@@ -54,7 +54,7 @@ jobs:
         run: |
           docker run -v $(pwd):/workdir localhost:5000/name/app:latest example.pdf example-small.pdf
       - name: Archive PDF
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: example-small.pdf
           path: test/example-small.pdf
