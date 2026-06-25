@@ -42,7 +42,7 @@ jobs:
           path: /tmp/.buildx-cache
           key: ${{ runner.os }}-buildx
       - name: Set up Git repository
-        uses: actions/checkout@v5
+        uses: actions/checkout@v6
       - name: Build
         id: docker_build
         uses: docker/build-push-action@v4
@@ -65,7 +65,7 @@ jobs:
     name: v1
     steps:
       - name: Checkout
-        uses: actions/checkout@v5
+        uses: actions/checkout@v6
       - uses: koppor/cpdfsqueeze-action@v1
         with:
           input_file: 'test/example.pdf'
@@ -75,7 +75,7 @@ jobs:
     name: latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v5
+        uses: actions/checkout@v6
       - uses: koppor/cpdfsqueeze-action@latest
         with:
           input_file: 'test/example.pdf'
@@ -85,7 +85,7 @@ jobs:
     name: edge
     steps:
       - name: Checkout
-        uses: actions/checkout@v5
+        uses: actions/checkout@v6
       - uses: koppor/cpdfsqueeze-action@edge
         with:
           input_file: 'test/example.pdf'
